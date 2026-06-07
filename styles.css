@@ -275,7 +275,7 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0) scale(.98); }
 .btn svg { flex: none; }
-.btn--sm { padding: .5rem 1rem; min-height: 42px; font-size: var(--fs-200); }
+.btn--sm { padding: .5rem 1rem; min-height: 44px; font-size: var(--fs-200); }
 .btn--lg { padding: 1rem 2rem; min-height: 56px; font-size: var(--fs-400); }
 .btn--cta  { background: var(--cta-bg); color: var(--cta-fg); box-shadow: var(--shadow-sm); }
 .btn--cta:hover  { background: var(--cta-bg-hover); color: #fff; box-shadow: var(--shadow-md); }
@@ -328,8 +328,8 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 /* ---- Cabeceras de sección ------------------------------------------ */
 .eyebrow {
   display: inline-flex; align-items: center; gap: .4rem;
-  font-family: var(--font-display); font-weight: var(--fw-bold);
-  font-size: var(--fs-200); letter-spacing: .02em; text-transform: uppercase;
+  font-family: var(--font-body); font-weight: var(--fw-bold);
+  font-size: var(--fs-200); letter-spacing: .06em; text-transform: uppercase;
   color: var(--accent-700); margin-bottom: .5rem;
 }
 .eyebrow svg { color: var(--accent-700); }
