@@ -1,0 +1,259 @@
+/* ==========================================================================
+   EduKinesis — Design System / Base Tokens
+   --------------------------------------------------------------------------
+   Etapa 1 (claude/design-system): SOLO tokens + reset + tipografía base.
+   El maquetado de secciones llega en la Etapa 2 (claude/landing-v1).
+
+   Paleta de marca OBLIGATORIA (logo puzzle 3D). Todos los pares de color
+   fueron verificados contra WCAG 2.1 (ver DESIGN.md → "Contraste").
+   Estilo visual: Claymorphism-lite (suave, redondeado, sombras dobles
+   sutiles) — coherente con el puzzle 3D, pero contenido y profesional.
+   ========================================================================== */
+
+:root {
+  /* ---- Marca: colores base (NO modificar, salen del PDF de marca) ------ */
+  --brand-violeta: #994EC3;
+  --brand-verde:   #61CCB9;   /* verde agua */
+  --brand-verde-claro: #97CFCA;
+  --brand-mostaza: #DFA53C;
+  --brand-rosa:    #FE94F5;
+  --brand-navy:    #1D5074;   /* contorno del logotipo */
+
+  /* ---- Rampas accesibles derivadas de la marca ------------------------- */
+  /* tint-50/100 = fondos de sección; base = relleno decorativo;
+     -700 = texto/íconos sobre blanco (AA, ≥4.5:1).                         */
+  /* -700 = texto/ícono AA (≥4.5:1) sobre blanco Y sobre su propio tinte 50/100 */
+  --c-verde-50:  #EFFAF8;
+  --c-verde-100: #E3F6F2;
+  --c-verde-500: #61CCB9;
+  --c-verde-700: #39776C;   /* on-white 5.21 · on-tint-100 4.65            */
+
+  --c-mostaza-50:  #FCF6EC;
+  --c-mostaza-100: #F9EFDC;
+  --c-mostaza-500: #DFA53C;
+  --c-mostaza-700: #896625; /* on-white 5.26 · on-tint-100 4.61            */
+
+  --c-rosa-50:  #FFF4FE;
+  --c-rosa-100: #FFECFD;
+  --c-rosa-500: #FE94F5;
+  --c-rosa-700: #955790;    /* on-white 5.19 · on-tint-100 4.62            */
+
+  --c-violeta-50:  #F5EDF9;
+  --c-violeta-100: #EDDFF4;
+  --c-violeta-500: #994EC3; /* ya cumple AA sobre blanco (4.96:1)          */
+  --c-violeta-700: #7E3BA6;
+
+  --c-navy-50:  #E8EEF1;
+  --c-navy-100: #D6E0E6;
+  --c-navy-500: #1D5074;
+  --c-navy-700: #163C58;
+
+  /* ---- Roles semánticos (usar SIEMPRE estos, no los hex crudos) -------- */
+  --color-bg:          #FFFFFF;
+  --color-bg-soft:     #FBF7FF;  /* off-white con tinte violeta muy leve   */
+  --color-surface:     #FFFFFF;  /* cards                                   */
+  --color-ink:         #142433;  /* texto cuerpo (15.8:1 sobre blanco)     */
+  --color-ink-soft:    #4A5A68;  /* texto secundario (≈7:1 sobre blanco)   */
+  --color-heading:     #1D5074;  /* títulos = navy (8.56:1)                */
+  --color-link:        #39776C;  /* enlaces = verde-700 (5.21 blanco · 4.93 bg-soft) */
+  --color-link-hover:  #2C5E54;
+  --color-border:      #E6E1EE;
+  --color-border-strong: #CBC3D8;
+  --color-focus:       #994EC3;  /* anillo de foco = violeta               */
+
+  /* CTA principal (WhatsApp) — verde de marca accesible con texto blanco
+     (texto blanco sobre #39776C = 5.21:1)                                 */
+  --cta-bg:        #39776C;
+  --cta-bg-hover:  #2C5E54;
+  --cta-fg:        #FFFFFF;
+  /* CTA secundaria (Instagram) — violeta de marca, texto blanco          */
+  --cta2-bg:       #994EC3;
+  --cta2-bg-hover: #7E3BA6;
+  --cta2-fg:       #FFFFFF;
+
+  /* Acento de sección — se sobreescribe por sección (ver DESIGN.md).
+     Por defecto verde agua.                                               */
+  --accent-50:  var(--c-verde-50);
+  --accent-100: var(--c-verde-100);
+  --accent-500: var(--c-verde-500);
+  --accent-700: var(--c-verde-700);
+
+  /* ---- Tipografía ------------------------------------------------------ */
+  --font-display: "Fredoka", ui-rounded, "Segoe UI", system-ui, sans-serif;
+  --font-body:    "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --fw-body:      400;
+  --fw-medium:    600;
+  --fw-bold:      700;
+  --fw-display:   600;  /* Fredoka SemiBold para títulos                   */
+  --fw-display-strong: 700;
+
+  /* Escala de tipo — fluida (mobile-first → desktop) con clamp()          */
+  --fs-100: 0.75rem;   /* 12px  · etiquetas, captions                     */
+  --fs-200: 0.875rem;  /* 14px  · small, metadatos                        */
+  --fs-300: 1rem;      /* 16px  · cuerpo base (mínimo móvil)              */
+  --fs-400: 1.125rem;  /* 18px  · cuerpo grande / lead                    */
+  --fs-500: clamp(1.25rem, 1.13rem + 0.6vw, 1.5rem);    /* h4 20→24       */
+  --fs-600: clamp(1.5rem, 1.31rem + 0.95vw, 2rem);      /* h3 24→32       */
+  --fs-700: clamp(1.875rem, 1.55rem + 1.6vw, 2.75rem);  /* h2 30→44       */
+  --fs-800: clamp(2.25rem, 1.7rem + 2.75vw, 3.75rem);   /* h1 36→60       */
+
+  --lh-tight:  1.12;   /* títulos grandes                                  */
+  --lh-snug:   1.25;   /* títulos chicos                                   */
+  --lh-normal: 1.6;    /* cuerpo                                           */
+  --tracking-tight: -0.01em;
+
+  /* ---- Espaciado (base 8px, medio-paso 4px) --------------------------- */
+  --space-1: 0.25rem;  /*  4 */
+  --space-2: 0.5rem;   /*  8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --section-y: clamp(3rem, 2rem + 5vw, 6rem);  /* padding vertical sección */
+  --gutter:    clamp(1rem, 0.5rem + 2.5vw, 2rem); /* padding horizontal    */
+  --container: 75rem;  /* 1200px ancho máx de contenido                    */
+  --measure:   65ch;   /* largo de línea legible                          */
+
+  /* ---- Radios (claymorphism: redondeado y mullido) -------------------- */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-pill: 999px;
+
+  /* ---- Sombras (suaves, dobles, tinte navy) --------------------------- */
+  --shadow-sm: 0 1px 2px rgba(29,80,116,.06), 0 2px 6px rgba(29,80,116,.06);
+  --shadow-md: 0 4px 10px rgba(29,80,116,.08), 0 12px 24px rgba(29,80,116,.08);
+  --shadow-lg: 0 10px 24px rgba(29,80,116,.10), 0 24px 48px rgba(29,80,116,.10);
+  /* sombra de color para piezas decorativas (usa el acento de sección)   */
+  --shadow-accent: 0 8px 20px color-mix(in srgb, var(--accent-500) 30%, transparent);
+
+  /* ---- Movimiento ----------------------------------------------------- */
+  --ease-out:  cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:  150ms;
+  --dur:       220ms;
+  --dur-slow:  320ms;
+
+  /* ---- z-index -------------------------------------------------------- */
+  --z-base: 0;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-overlay: 400;
+  --z-modal: 1000;
+}
+
+/* ==========================================================================
+   Reset moderno mínimo
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* compensa header fijo                        */
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select { font: inherit; color: inherit; }
+
+a { color: var(--color-link); text-decoration-thickness: 0.08em; text-underline-offset: 0.15em; }
+a:hover { color: var(--color-link-hover); }
+
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-display);
+  line-height: var(--lh-snug);
+  color: var(--color-heading);
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-800); line-height: var(--lh-tight); letter-spacing: var(--tracking-tight); }
+h2 { font-size: var(--fs-700); }
+h3 { font-size: var(--fs-600); }
+h4 { font-size: var(--fs-500); }
+p  { max-width: var(--measure); text-wrap: pretty; }
+
+/* ==========================================================================
+   Accesibilidad
+   ========================================================================== */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  /* outline transparente = sigue visible en modo forced-colors (alto contraste) */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  /* Doble anillo: halo blanco + violeta. Garantiza ≥3:1 tanto sobre fondos
+     claros (blanco/tintes) como sobre las secciones navy (header/footer/§5). */
+  box-shadow: 0 0 0 2px #fff, 0 0 0 5px var(--color-focus);
+  border-radius: var(--radius-sm);
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: var(--space-3); top: -100%;
+  z-index: var(--z-modal);
+  background: var(--c-navy-500); color: #fff;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  transition: top var(--dur) var(--ease-out);
+}
+.skip-link:focus { top: var(--space-3); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Helpers de layout reutilizables (la Etapa 2 construye sobre estos)
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--section-y); }
+
+/* Mapeo de acento por sección — set `data-accent` en la <section>.
+   Cambia el acento que heredan chips, íconos, bordes y la sombra. */
+[data-accent="verde"]   { --accent-50: var(--c-verde-50);   --accent-100: var(--c-verde-100);   --accent-500: var(--c-verde-500);   --accent-700: var(--c-verde-700); }
+[data-accent="mostaza"] { --accent-50: var(--c-mostaza-50); --accent-100: var(--c-mostaza-100); --accent-500: var(--c-mostaza-500); --accent-700: var(--c-mostaza-700); }
+[data-accent="rosa"]    { --accent-50: var(--c-rosa-50);    --accent-100: var(--c-rosa-100);    --accent-500: var(--c-rosa-500);    --accent-700: var(--c-rosa-700); }
+[data-accent="violeta"] { --accent-50: var(--c-violeta-50); --accent-100: var(--c-violeta-100); --accent-500: var(--c-violeta-500); --accent-700: var(--c-violeta-700); }
+[data-accent="navy"]    { --accent-50: var(--c-navy-50);    --accent-100: var(--c-navy-100);    --accent-500: var(--c-navy-500);    --accent-700: var(--c-navy-700); }
