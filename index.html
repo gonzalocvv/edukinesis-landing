@@ -40,7 +40,10 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Fuentes no bloqueantes: el paint no espera el round-trip a Google Fonts.
+       display=swap ya pinta con la fallback y cambia al cargar. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@400;600;700&display=swap"></noscript>
 
   <link rel="stylesheet" href="/styles.css">
 
@@ -78,6 +81,12 @@
       "suggestedMinAge": 4,
       "suggestedMaxAge": 11
     },
+    "employee": [
+      { "@type": "Person", "name": "Facundo Borches", "jobTitle": "Licenciado en Educación Física" },
+      { "@type": "Person", "name": "Cecilia Tito", "jobTitle": "Licenciada en Educación Física y Deportes" },
+      { "@type": "Person", "name": "Jimena Borches", "jobTitle": "Maestra de Educación Primaria" },
+      { "@type": "Person", "name": "Lucía Albornoz", "jobTitle": "Estudiante de Educación Física y Técnica en Recreación" }
+    ],
     "sameAs": [
       "https://www.instagram.com/edukinesiss/",
       "https://www.youtube.com/@edukinesiss"
@@ -315,10 +324,39 @@
           <h2 id="equipo-title">Un equipo profesional y comprometido</h2>
           <p class="section-intro">Profesionales del ámbito educativo que trabajan con compromiso, responsabilidad y vocación, priorizando siempre el bienestar de cada niño y su familia.</p>
         </div>
-        <ul class="grid grid--3 reveal" role="list">
-          <li class="card card--team" data-accent="verde"><span class="card__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-medal"/></svg></span><h3>Profesor de Educación Física</h3><p>Desarrollo motriz, predeportes y recreación.</p></li>
-          <li class="card card--team" data-accent="navy"><span class="card__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-graduation"/></svg></span><h3>Maestra de Educación Primaria</h3><p>Acompañamiento pedagógico y apoyo escolar.</p></li>
-          <li class="card card--team" data-accent="mostaza"><span class="card__icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Recreadora educativa</h3><p>Juegos, talleres y dinámicas grupales.</p></li>
+        <ul class="grid grid--team reveal" role="list">
+          <li class="card card--team" data-accent="verde">
+            <img class="card--team__photo" src="/img/equipo-facundo-borches.webp" alt="Facundo Borches, profesor de educación física de EduKinesis, sonriendo en la cancha" width="640" height="800" loading="lazy">
+            <div class="card--team__body">
+              <h3>Facundo Borches</h3>
+              <p class="card--team__role">Lic. en Educación Física · Opción Prácticas Educativas</p>
+              <p class="card--team__desc">Lleva adelante las dinámicas, la organización de actividades y las propuestas educativas, fomentando la cooperación, el compañerismo y el desarrollo integral de los niños.</p>
+            </div>
+          </li>
+          <li class="card card--team" data-accent="mostaza">
+            <img class="card--team__photo" src="/img/equipo-cecilia-tito.webp" alt="Cecilia Tito, profesora de educación física y deportes de EduKinesis, sonriendo en la cancha" width="640" height="800" loading="lazy">
+            <div class="card--team__body">
+              <h3>Cecilia Tito</h3>
+              <p class="card--team__role">Lic. en Educación Física y Deportes</p>
+              <p class="card--team__desc">A cargo de juegos, deportes, habilidades motrices, recreación y propuestas ludopedagógicas orientadas al aprendizaje mediante el juego.</p>
+            </div>
+          </li>
+          <li class="card card--team" data-accent="violeta">
+            <img class="card--team__photo" src="/img/equipo-jimena-borches.webp" alt="Jimena Borches, maestra de educación primaria de EduKinesis, sonriendo en la cancha" width="640" height="800" loading="lazy">
+            <div class="card--team__body">
+              <h3>Jimena Borches</h3>
+              <p class="card--team__role">Maestra de Educación Primaria</p>
+              <p class="card--team__desc">Acompaña a los niños en las tareas y los contenidos escolares —matemática, biología, lengua y comprensión lectora—, con apoyo pedagógico personalizado.</p>
+            </div>
+          </li>
+          <li class="card card--team" data-accent="rosa">
+            <img class="card--team__photo" src="/img/equipo-lucia-albornoz.webp" alt="Lucía Albornoz, recreadora y estudiante de educación física de EduKinesis, sonriendo en la cancha" width="640" height="800" loading="lazy">
+            <div class="card--team__body">
+              <h3>Lucía Albornoz</h3>
+              <p class="card--team__role">Estudiante de Lic. en Educación Física · Téc. en Recreación</p>
+              <p class="card--team__desc">Recreadora y acompañante en las actividades, colaborando en la integración, la participación y el disfrute de los niños durante las jornadas.</p>
+            </div>
+          </li>
         </ul>
       </div>
     </section>
@@ -360,7 +398,7 @@
   <footer class="site-footer" data-accent="navy" id="contacto">
     <div class="container site-footer__inner">
       <div class="site-footer__brand">
-        <img src="/img/logo-horizontal.webp" alt="EduKinesis" width="240" height="38" loading="lazy">
+        <img src="/img/logo-wordmark.webp" alt="EduKinesis" width="1200" height="131" loading="lazy">
         <p class="site-footer__claim">«Guiando a cada niño para que descubra su versión más feliz.»</p>
       </div>
 
@@ -394,7 +432,7 @@
           <a class="social-btn" href="https://www.youtube.com/@edukinesiss" target="_blank" rel="noopener" aria-label="YouTube de EduKinesis">
             <svg width="22" height="22" aria-hidden="true"><use href="#i-youtube"/></svg>
           </a>
-          <a class="social-btn" href="https://wa.me/59892212161" target="_blank" rel="noopener" aria-label="WhatsApp de EduKinesis">
+          <a class="social-btn" href="https://wa.me/59892212161?text=%C2%A1Hola%20EduKinesis!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20las%20actividades%20para%20mi%20hijo%2Fa." target="_blank" rel="noopener" aria-label="WhatsApp de EduKinesis">
             <svg width="22" height="22" aria-hidden="true"><use href="#i-whatsapp"/></svg>
           </a>
         </div>

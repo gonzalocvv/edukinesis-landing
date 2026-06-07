@@ -49,7 +49,7 @@ Secciones sugeridas:
 - 📱 WhatsApp: 092 212 161 → link `https://wa.me/59892212161` con mensaje precargado
 - 📧 edukinesis9@gmail.com
 - 📸 Instagram: https://www.instagram.com/edukinesiss/ (ojo: con doble "s")
-- ▶️ YouTube: @edukinesis
+- ▶️ YouTube: @edukinesiss (también con doble "s", verificado: es el canal real de EduKinesis)
 
 ## SEO (prioridad alta — es la razón de ser de la página)
 - `lang="es"`, HTML semántico (header/main/section/footer, un solo h1).
