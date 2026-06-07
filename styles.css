@@ -275,7 +275,7 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0) scale(.98); }
 .btn svg { flex: none; }
-.btn--sm { padding: .5rem 1rem; min-height: 42px; font-size: var(--fs-200); }
+.btn--sm { padding: .5rem 1rem; min-height: 44px; font-size: var(--fs-200); }
 .btn--lg { padding: 1rem 2rem; min-height: 56px; font-size: var(--fs-400); }
 .btn--cta  { background: var(--cta-bg); color: var(--cta-fg); box-shadow: var(--shadow-sm); }
 .btn--cta:hover  { background: var(--cta-bg-hover); color: #fff; box-shadow: var(--shadow-md); }
@@ -328,13 +328,18 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 /* ---- Cabeceras de sección ------------------------------------------ */
 .eyebrow {
   display: inline-flex; align-items: center; gap: .4rem;
-  font-family: var(--font-display); font-weight: var(--fw-bold);
-  font-size: var(--fs-200); letter-spacing: .02em; text-transform: uppercase;
+  font-family: var(--font-body); font-weight: var(--fw-bold);
+  font-size: var(--fs-200); letter-spacing: .06em; text-transform: uppercase;
   color: var(--accent-700); margin-bottom: .5rem;
 }
 .eyebrow svg { color: var(--accent-700); }
 .section-head { max-width: 60ch; margin: 0 auto var(--space-7); text-align: center; }
 .section-head .eyebrow { justify-content: center; }
+/* Variante alineada a la izquierda para secciones con grilla (rompe el
+   patrón de 'todo centrado'). */
+.section-head--start { margin-inline: 0; text-align: left; }
+.section-head--start .eyebrow { justify-content: flex-start; }
+.section-head--start .section-intro { margin-inline: 0; }
 .section-intro { color: var(--color-ink-soft); font-size: var(--fs-400); margin-top: .75rem; }
 .section--soft { background: var(--accent-50); }
 
@@ -353,17 +358,26 @@ p  { max-width: var(--measure); text-wrap: pretty; }
   background: var(--color-surface); border: 1px solid var(--color-border);
   border-radius: var(--radius-lg); padding: var(--space-5); height: 100%;
   box-shadow: var(--shadow-sm);
-  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  transition: box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
 }
-.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+/* Reacción honesta (no 'lift' que finja ser clickeable): el borde toma el
+   color de la tarjeta y el ícono hace un guiño juguetón. */
+.card:hover { box-shadow: var(--shadow-md); border-color: var(--accent-500); }
 .card h3 { margin-bottom: .4rem; }
 .card p { color: var(--color-ink-soft); }
 .card__icon {
   display: inline-grid; place-items: center; width: 52px; height: 52px;
   margin-bottom: var(--space-3); border-radius: var(--radius-md);
   background: var(--accent-100); color: var(--accent-700);
+  transition: transform var(--dur) var(--ease-out);
 }
+.card:hover .card__icon { transform: scale(1.08) rotate(-4deg); }
 .card__tag { margin-bottom: .6rem; }
+
+/* Equipo: layout distinto al grid de talleres — banda de color arriba,
+   ícono más grande y centrado (son personas reales, no features). */
+.card--team { text-align: center; border-top: 4px solid var(--accent-500); padding-top: var(--space-6); }
+.card--team .card__icon { width: 64px; height: 64px; margin-inline: auto; }
 
 .pillar { text-align: center; padding: var(--space-5) var(--space-4); }
 .pillar__icon {
@@ -380,9 +394,10 @@ p  { max-width: var(--measure); text-wrap: pretty; }
   font-weight: var(--fw-bold); font-size: var(--fs-200);
   padding: .3rem .85rem; border-radius: var(--radius-pill);
 }
+/* Grande: hereda el relleno de color del acento (cada chip su color de puzzle),
+   texto accent-700 sobre accent-100 (verificado AA por color). */
 .chip--lg {
-  background: #fff; color: var(--color-heading); border: 2px solid var(--accent-100);
-  font-size: var(--fs-300); padding: .6rem 1.15rem; box-shadow: var(--shadow-sm);
+  font-size: var(--fs-300); padding: .55rem 1.15rem; box-shadow: var(--shadow-sm);
 }
 .chip-cloud { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; }
 
@@ -428,6 +443,20 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 }
 @media (max-width: 520px) { .hero__puzzle { width: 84px; top: -14px; } }
 
+/* Entrada escalonada del hero (cascada sutil eyebrow → h1 → lead → botones) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero__content.reveal { opacity: 1; transform: none; }
+  .js .hero__content.reveal > * {
+    opacity: 0; transform: translateY(12px);
+    transition: opacity .5s var(--ease-out), transform .5s var(--ease-out);
+  }
+  .js .hero__content.reveal.is-visible > * { opacity: 1; transform: none; }
+  .js .hero__content.reveal.is-visible > *:nth-child(1) { transition-delay: .04s; }
+  .js .hero__content.reveal.is-visible > *:nth-child(2) { transition-delay: .12s; }
+  .js .hero__content.reveal.is-visible > *:nth-child(3) { transition-delay: .20s; }
+  .js .hero__content.reveal.is-visible > *:nth-child(4) { transition-delay: .28s; }
+}
+
 /* ---- Sección navy (oscura) ----------------------------------------- */
 .section--navy { background: linear-gradient(160deg, #1D5074 0%, #163C58 100%); color: #DCE7EE; }
 .section--navy h2 { color: #fff; }
@@ -443,14 +472,28 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 @media (min-width: 980px) { .gallery { grid-template-columns: repeat(4, 1fr); } }
 .gallery__item {
   display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer;
-  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); aspect-ratio: 1;
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); aspect-ratio: 4 / 5;
   transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
 }
-.gallery__item img { width: 100%; height: 100%; object-fit: cover; }
+.gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
 .gallery__item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.gallery__item:hover img { transform: scale(1.05); }
 
 /* ---- Banda CTA ----------------------------------------------------- */
-.cta-band { background: linear-gradient(135deg, var(--c-violeta-500) 0%, #7E3BA6 100%); color: #fff; text-align: center; }
+/* Bloque de marca (no degradado SaaS): violeta sólido + brillo suave arriba
+   (claymorphism) + filo multicolor tipo puzzle. */
+.cta-band {
+  position: relative; isolation: isolate;
+  background-color: var(--c-violeta-500);
+  background-image: radial-gradient(130% 120% at 50% -25%, rgba(255,255,255,.20), transparent 58%);
+  color: #fff; text-align: center;
+}
+.cta-band::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; z-index: 1;
+  background: linear-gradient(90deg,
+    var(--brand-verde) 0 25%, var(--brand-mostaza) 25% 50%,
+    var(--brand-rosa) 50% 75%, var(--brand-violeta) 75% 100%);
+}
 .cta-band__inner { max-width: 56ch; margin-inline: auto; }
 .cta-band h2 { color: #fff; }
 .cta-band p { color: rgba(255,255,255,.92); margin: .75rem auto var(--space-5); }
