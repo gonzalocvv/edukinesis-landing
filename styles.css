@@ -365,6 +365,11 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 }
 .card__tag { margin-bottom: .6rem; }
 
+/* Equipo: layout distinto al grid de talleres — banda de color arriba,
+   ícono más grande y centrado (son personas reales, no features). */
+.card--team { text-align: center; border-top: 4px solid var(--accent-500); padding-top: var(--space-6); }
+.card--team .card__icon { width: 64px; height: 64px; margin-inline: auto; }
+
 .pillar { text-align: center; padding: var(--space-5) var(--space-4); }
 .pillar__icon {
   display: grid; place-items: center; width: 64px; height: 64px; margin: 0 auto var(--space-3);
