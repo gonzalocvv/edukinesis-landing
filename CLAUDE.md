@@ -14,7 +14,17 @@ Objetivos:
 - Mobile-first: la mayoría del tráfico vendrá de Instagram en celular.
 
 ## Diseño
-- Usar la skill **ui-ux-pro-max** para definir sistema de diseño (paleta, tipografía, espaciado) y los agentes de diseño de **gstack** para iterar.
+
+### Paleta de marca (OBLIGATORIA — extraída del PDF de marca en la raíz)
+Estos son los colores oficiales de EduKinesis (logo de piezas de puzzle). NO inventar otros tonos; derivar variantes (hover, fondos claros) a partir de estos:
+- Violeta: `#994EC3`
+- Verde agua: `#61CCB9` (versión clara tipografía: `#97CFCA`)
+- Mostaza: `#DFA53C`
+- Rosa: `#FE94F5`
+- Azul oscuro: `#1D5074` (contorno del logotipo — sirve como color de texto/headings sobre fondo claro)
+El logo (puzzle 3D + logotipo) está en el PDF `Documento A4 princesas Hoja de papel multicolor.pdf` — extraerlo a PNG/WebP con fondo transparente o blanco para usar en hero, favicon y OG image.
+
+- Usar la skill **ui-ux-pro-max** para definir sistema de diseño (tipografía, espaciado) sobre esta paleta, y los agentes de diseño de **gstack** para iterar.
 - Tono: alegre e infantil pero **profesional** — colores vivos pero cuidados, nada amateur. Es un emprendimiento educativo serio dirigido a padres.
 - Las fotos reales están en `fotos/` (renombrarlas con nombres descriptivos en español, ej. `juegos-al-aire-libre.webp`, convertir a WebP, comprimir, `loading="lazy"`).
 - Animaciones sutiles (scroll reveal está bien), nada que pese.
