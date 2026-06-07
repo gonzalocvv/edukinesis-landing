@@ -283,7 +283,7 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 .btn--cta2:hover { background: var(--cta2-bg-hover); color: #fff; }
 .btn--ghost { background: #fff; color: var(--color-heading); border-color: var(--color-border-strong); }
 .btn--ghost:hover { background: var(--accent-50); }
-.btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); }
+.btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
 .btn--ghost-light:hover { background: rgba(255,255,255,.12); color: #fff; }
 
 /* ---- Header / Nav --------------------------------------------------- */
