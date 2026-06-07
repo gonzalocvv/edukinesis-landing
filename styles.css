@@ -380,9 +380,10 @@ p  { max-width: var(--measure); text-wrap: pretty; }
   font-weight: var(--fw-bold); font-size: var(--fs-200);
   padding: .3rem .85rem; border-radius: var(--radius-pill);
 }
+/* Grande: hereda el relleno de color del acento (cada chip su color de puzzle),
+   texto accent-700 sobre accent-100 (verificado AA por color). */
 .chip--lg {
-  background: #fff; color: var(--color-heading); border: 2px solid var(--accent-100);
-  font-size: var(--fs-300); padding: .6rem 1.15rem; box-shadow: var(--shadow-sm);
+  font-size: var(--fs-300); padding: .55rem 1.15rem; box-shadow: var(--shadow-sm);
 }
 .chip-cloud { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; }
 
