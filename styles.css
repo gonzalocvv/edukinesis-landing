@@ -465,7 +465,20 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 .gallery__item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 
 /* ---- Banda CTA ----------------------------------------------------- */
-.cta-band { background: linear-gradient(135deg, var(--c-violeta-500) 0%, #7E3BA6 100%); color: #fff; text-align: center; }
+/* Bloque de marca (no degradado SaaS): violeta sólido + brillo suave arriba
+   (claymorphism) + filo multicolor tipo puzzle. */
+.cta-band {
+  position: relative; isolation: isolate;
+  background-color: var(--c-violeta-500);
+  background-image: radial-gradient(130% 120% at 50% -25%, rgba(255,255,255,.20), transparent 58%);
+  color: #fff; text-align: center;
+}
+.cta-band::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; z-index: 1;
+  background: linear-gradient(90deg,
+    var(--brand-verde) 0 25%, var(--brand-mostaza) 25% 50%,
+    var(--brand-rosa) 50% 75%, var(--brand-violeta) 75% 100%);
+}
 .cta-band__inner { max-width: 56ch; margin-inline: auto; }
 .cta-band h2 { color: #fff; }
 .cta-band p { color: rgba(255,255,255,.92); margin: .75rem auto var(--space-5); }
