@@ -374,10 +374,18 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 .card:hover .card__icon { transform: scale(1.08) rotate(-4deg); }
 .card__tag { margin-bottom: .6rem; }
 
-/* Equipo: layout distinto al grid de talleres — banda de color arriba,
-   ícono más grande y centrado (son personas reales, no features). */
-.card--team { text-align: center; border-top: 4px solid var(--accent-500); padding-top: var(--space-6); }
-.card--team .card__icon { width: 64px; height: 64px; margin-inline: auto; }
+/* Equipo: tarjetas con foto real (personas, no features). Foto 4:5 arriba,
+   nombre + formación (el dato de confianza) + rol. El acento rota por card
+   (verde · mostaza · violeta · rosa) como en pilares/talleres. */
+.grid--team { grid-template-columns: 1fr; }
+@media (min-width: 560px) { .grid--team { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 920px) { .grid--team { grid-template-columns: repeat(4, 1fr); } }
+.card--team { padding: 0; overflow: hidden; display: flex; flex-direction: column; border-top: 4px solid var(--accent-500); }
+.card--team__photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; background: var(--accent-50); }
+.card--team__body { padding: var(--space-4) var(--space-5) var(--space-5); }
+.card--team__body h3 { font-size: var(--fs-500); margin-bottom: .2rem; }
+.card--team__role { color: var(--accent-700); font-weight: var(--fw-bold); font-size: var(--fs-200); margin-bottom: .5rem; }
+.card--team__desc { color: var(--color-ink-soft); font-size: var(--fs-200); }
 
 .pillar { text-align: center; padding: var(--space-5) var(--space-4); }
 .pillar__icon {
