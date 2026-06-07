@@ -335,6 +335,11 @@ p  { max-width: var(--measure); text-wrap: pretty; }
 .eyebrow svg { color: var(--accent-700); }
 .section-head { max-width: 60ch; margin: 0 auto var(--space-7); text-align: center; }
 .section-head .eyebrow { justify-content: center; }
+/* Variante alineada a la izquierda para secciones con grilla (rompe el
+   patrón de 'todo centrado'). */
+.section-head--start { margin-inline: 0; text-align: left; }
+.section-head--start .eyebrow { justify-content: flex-start; }
+.section-head--start .section-intro { margin-inline: 0; }
 .section-intro { color: var(--color-ink-soft); font-size: var(--fs-400); margin-top: .75rem; }
 .section--soft { background: var(--accent-50); }
 
